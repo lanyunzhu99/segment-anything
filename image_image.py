@@ -20,7 +20,7 @@ response = requests.get(url)
 init_image = Image.open(BytesIO(response.content)).convert("RGB")
 '''
 
-init_image = Image.open('').convert("RGB")
+init_image = Image.open('/home/lanyunz/sam_2/segment-anything/test_image/3.jpeg').convert("RGB")
 init_image.thumbnail((768, 768))
 
 prompt = "A girl walking on the beach"
