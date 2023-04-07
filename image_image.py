@@ -23,8 +23,8 @@ init_image = Image.open(BytesIO(response.content)).convert("RGB")
 init_image = Image.open('/home/lanyunz/sam_2/segment-anything/test_image/3.jpeg').convert("RGB")
 init_image.thumbnail((768, 768))
 
-prompt = "A girl walking on the beach, with the same face as the picture"
+prompt = "change the color of the cloth to blue"
 
 images = pipe(prompt=prompt, image=init_image, strength=0.75, guidance_scale=7.5).images
 
-images[0].save("./out_image/2.png")
+images[0].save("./out_image/3.png")
