@@ -8,7 +8,7 @@ device = "cuda"
 pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
 pipe = pipe.to(device)
 
-prompt = "A picture of a rectangular rug. This rug is very lovely. This rug is not a solid color, with small animal prints on the rug such as cat, rabbit, and bear. The color of the rug is a lighter color with less saturation, and the four sides of the rug have border lines."
+prompt = "A picture of a rectangular carpet. This carpet is not a solid color. Its style is very cute. There are patterns of small animals such as rabbits and cats on the carpet. The color of the carpet is a light color with low saturation. The four edges of the carpet have border lines."
 image = pipe(prompt).images[0]  
     
 image.save("./diffusion_generate_3.png")
