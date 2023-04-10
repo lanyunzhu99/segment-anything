@@ -8,7 +8,7 @@ device = "cuda"
 pipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)
 pipe = pipe.to(device)
 
-prompt = "A picture of a cute carpet with colors that have low saturation. This carpet is not a solid color. Its style is very loevely. There is a cute cartoon bear printed on the carpet."
+prompt = "A picture of a cute carpet with colors that have low saturation. This carpet is not a solid color. Its style is very loevely. There is a cute cartoon cat printed on the carpet."
 '''
 prompt = "A carpet in Alice's Wonderland style. This carpet is very cute."
 prompt = "A photo of a japanese beautiful girl with large chest, oval face and large eyes. She wears JK uniform"
