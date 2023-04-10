@@ -20,7 +20,7 @@ response = requests.get(url)
 init_image = Image.open(BytesIO(response.content)).convert("RGB")
 '''
 
-init_image = Image.open('/home/lanyunz/sam_2/segment-anything/test_image/3.jpeg').convert("RGB")
+init_image = Image.open('/home/lanyunz/sam_2/segment-anything/test_image/carpet.jpeg').convert("RGB")
 init_image.thumbnail((768, 768))
 
 prompt = "change the color of the cloth to blue"
@@ -28,4 +28,4 @@ prompt = "a carpet with a style similar to this image"
 
 images = pipe(prompt=prompt, image=init_image, strength=0.75, guidance_scale=7.5).images
 
-images[0].save("./out_image/carpet.jpeg")
+images[0].save("./out_image/carpet.jpg")
