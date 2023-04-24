@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 from segment_anything_1 import build_sam, SamPredictor 
 predictor = SamPredictor(build_sam(checkpoint="/public2/home/lanyun/pretrain/sam_vit_h_4b8939.pth"))
 image = cv2.imread("./test_image/5.jpg")
