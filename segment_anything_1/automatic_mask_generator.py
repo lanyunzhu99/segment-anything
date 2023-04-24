@@ -204,7 +204,6 @@ class SamAutomaticMaskGenerator:
         data = MaskData()
         for crop_box, layer_idx in zip(crop_boxes, layer_idxs):
             crop_data = self._process_crop(image, crop_box, layer_idx, orig_size)
-            print('haha')
             data.cat(crop_data)
 
         # Remove duplicate masks between crops
