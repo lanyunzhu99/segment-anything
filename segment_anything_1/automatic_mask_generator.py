@@ -240,7 +240,6 @@ class SamAutomaticMaskGenerator:
         points_for_image = self.point_grids[crop_layer_idx] * points_scale
 
         # Generate masks for this crop in batches
-        print('mmmmmm')
         data = MaskData()
         
         
@@ -253,7 +252,6 @@ class SamAutomaticMaskGenerator:
         
         
         for (points,) in batch_iterator(self.points_per_batch, points_for_image):
-            print(points.shape)
             batch_data = self._process_batch(points, cropped_im_size, crop_box, orig_size)
             data.cat(batch_data)
             del batch_data
