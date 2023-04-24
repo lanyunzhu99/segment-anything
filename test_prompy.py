@@ -5,8 +5,11 @@ predictor = SamPredictor(build_sam(checkpoint="/public2/home/lanyun/pretrain/sam
 image = cv2.imread("./test_image/5.jpg")
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 predictor.set_image(image)
-masks, _, _ = predictor.predict(None)
+masks, _, _ = predictor.predict()
 print(masks.shape)
 print(masks[0, 100, 100])
+out = np.ones(masks.shape)
+out = out * masks
+print(np.sum(out))
 cv2.imwrite('/public2/home/lanyun/sam/segment-anything/1.jpg', np.uint8(masks))
 
