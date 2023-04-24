@@ -5,12 +5,14 @@
 # LICENSE file in the root directory of this source tree.
 
 import cv2  # type: ignore
-
+import os
+import sys
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 from segment_anything_1 import SamAutomaticMaskGenerator, sam_model_registry
 
 import argparse
 import json
-import os
+
 from typing import Any, Dict, List
 
 parser = argparse.ArgumentParser(
