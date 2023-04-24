@@ -6,4 +6,5 @@ image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 predictor.set_image(image)
 masks, _, _ = predictor.predict()
 print(masks.shape)
-cv2.imwrite('./1.jpg', masks)
+cv2.imwrite('./1.jpg', np.uint8(masks))
+
