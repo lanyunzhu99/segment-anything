@@ -1,1 +1,1 @@
-python3 ./scripts/amg.py --checkpoint /public2/home/lanyun/pretrain/sam_vit_h_4b8939.pth --input ./test_image/5.jpg --output ./output_2
+python3 ./scripts/amg.py --checkpoint /public2/home/lanyun/pretrain/sam_vit_h_4b8939.pth --input ./test_image/5_resize.jpg --output ./output_2

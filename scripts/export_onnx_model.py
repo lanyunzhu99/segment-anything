@@ -6,8 +6,8 @@
 
 import torch
 
-from segment_anything import build_sam, build_sam_vit_b, build_sam_vit_l
-from segment_anything.utils.onnx import SamOnnxModel
+from segment_anything_1 import build_sam, build_sam_vit_b, build_sam_vit_l
+from segment_anything_1.utils.onnx import SamOnnxModel
 
 import argparse
 import warnings
