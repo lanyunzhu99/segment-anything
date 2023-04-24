@@ -244,20 +244,20 @@ class SamAutomaticMaskGenerator:
         data = MaskData()
         
         
-        
+        '''
         points = np.empty((62, 2))
         batch_data = self._process_batch(points, cropped_im_size, crop_box, orig_size)
         data.cat(batch_data)
         del batch_data
-        
-        
         '''
+        
+        
         for (points,) in batch_iterator(self.points_per_batch, points_for_image):
             print(points.shape)
             batch_data = self._process_batch(points, cropped_im_size, crop_box, orig_size)
             data.cat(batch_data)
             del batch_data
-        '''
+        
             
             
             
