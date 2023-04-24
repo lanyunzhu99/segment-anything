@@ -7,5 +7,6 @@ image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 predictor.set_image(image)
 masks, _, _ = predictor.predict()
 print(masks.shape)
+print(masks[0, 100, 100])
 cv2.imwrite('/public2/home/lanyun/sam/segment-anything/1.jpg', np.uint8(masks))
 
