@@ -1,7 +1,7 @@
 import cv2
 from segment_anything_1 import build_sam, SamPredictor 
 predictor = SamPredictor(build_sam(checkpoint="/public2/home/lanyun/pretrain/sam_vit_h_4b8939.pth"))
-image = cv2.imread("/Users/zhulanyun/Desktop/code/sam/segment-anything/test_image/5.jpg")
+image = cv2.imread("./test_image/5.jpg")
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 predictor.set_image(image)
 masks, _, _ = predictor.predict()
