@@ -242,11 +242,25 @@ class SamAutomaticMaskGenerator:
         # Generate masks for this crop in batches
         print('mmmmmm')
         data = MaskData()
+        
+        
+        
+        points = None
+        batch_data = self._process_batch(points, cropped_im_size, crop_box, orig_size)
+        data.cat(batch_data)
+        del batch_data
+        
+        '''
+        
         for (points,) in batch_iterator(self.points_per_batch, points_for_image):
             print(points.shape)
             batch_data = self._process_batch(points, cropped_im_size, crop_box, orig_size)
             data.cat(batch_data)
             del batch_data
+        '''  
+            
+            
+            
         self.predictor.reset_image()
 
         # Remove duplicates within this crop.
