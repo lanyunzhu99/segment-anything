@@ -128,7 +128,8 @@ def main():
         out = np.uint8(out * 255)
         print(masks.shape)
         #print(torch.max(masks))
-        out = cv2.imwrite('/3.jpg', out)
+        out = cv2.imwrite('./3.jpg', out)
+        
         
 
 if __name__ == '__main__':
