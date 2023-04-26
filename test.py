@@ -117,7 +117,7 @@ def main():
                     "original_size": (h, w),
                     }
         outputs = sam([batch], multimask_output=False)
-        masks = outputs['masks']
+        masks = outputs[0]['masks']
         print(masks.shape)
 
 if __name__ == '__main__':
