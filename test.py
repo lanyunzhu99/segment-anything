@@ -121,6 +121,7 @@ def main():
                     }
         outputs = sam([batch], multimask_output=False)
         masks = outputs[0]['masks']
+        masks = torch.sigmoid(masks)
         print(masks.shape)
         print(torch.max(masks))
 
