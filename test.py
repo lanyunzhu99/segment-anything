@@ -101,7 +101,7 @@ def main():
     epoch_minus = []
     
     
-    inputs = Image.open("./test_image/8.jpg").convert('RGB')
+    inputs = Image.open("./test_image/9.png").convert('RGB')
     inputs = np.array(inputs)
     inputs = torch.Tensor(inputs).float()
     inputs = inputs.permute(2, 0, 1)
