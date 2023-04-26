@@ -95,13 +95,6 @@ def main():
     data_list = []
     
     #d_list = os.path.join(cfg['val']['data_root'], cfg['val']['data_list'])
-    for line in open(d_list, 'r'):
-        line_split = line.strip().split(" ")
-        image = os.path.join(d_root, line_split[0])
-        points = os.path.join(d_root, line_split[1])
-        data_list.append([image, points])
-        
-        
     trans = transforms.Compose([
                 transforms.ToTensor(),
                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
