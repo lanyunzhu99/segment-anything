@@ -95,9 +95,6 @@ def main():
     data_list = []
     
     #d_list = os.path.join(cfg['val']['data_root'], cfg['val']['data_list'])
-    d_root = cfg['dataset']['val']['data_root']
-    d_list = cfg['dataset']['val']['data_list']
-        
     for line in open(d_list, 'r'):
         line_split = line.strip().split(" ")
         image = os.path.join(d_root, line_split[0])
@@ -110,68 +107,23 @@ def main():
                 transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
             ])
     epoch_minus = []
-    for data in data_list:
-        inputs, points = data
-        inputs = Image.open(inputs).convert('RGB')
-        points = np.load(points)
-        count = len(points)
-        inputs = trans(inputs)
-        inputs = inputs.cuda()
-        inputs = inputs.unsqueeze(0)
-        
-        
-        b, c, h, w = inputs.shape
-        
-        inputs = F.interpolate(inputs, size=(2*h, 2*w), mode='bilinear', align_corners=True)
-        b, c, h, w = inputs.shape
-        
-        h, w = int(h), int(w)
-        assert b == 1, 'the batch size should equal to 1 in validation mode'
-        input_list = []
-        
-        print(inputs.shape)
-        
-        h_list = get_list(h)
-        w_list = get_list(w)
-        num_h = len(h_list)
-        num_w = len(w_list)
-        
-        for i in range(num_h):
-            h_start = h_list[i]
-            if i == num_h - 1:
-                h_end = h
-            else:
-                h_end = h_list[i+1]
-            for i in range(num_w):
-                w_start = w_list[i]
-                if i == num_w - 1:
-                    w_end = w
-                else:
-                    w_end = w_list[i+1]
-                input_list.append(inputs[:, :, h_start:h_end, w_start:w_end])
-        with torch.set_grad_enabled(False):
-            pre_count = 0.0
-            for idx, input in enumerate(input_list):
-                batch = {"images": input,
-                            "points": None,
-                            "targets": None,
-                            "st_sizes": None,
-                            "gd_count": None}
-                outputs = sam(batch, multimask_output=True)
-                outputs = predictor(outputs)
-                pre_count += torch.sum(outputs['prediction'])
-            res = count - pre_count.item()
-            epoch_minus.append(res)
-            
-        
-        
     
-    epoch_minus = np.array(epoch_minus)
-    mse = np.sqrt(np.mean(np.square(epoch_minus)))
-    mae = np.mean(np.abs(epoch_minus))
-    log_str = 'mae {}, mse {}'.format(mae, mse)
-    print(log_str)
-
+    
+    inputs = Image.open("./test_image/5.jpg").convert('RGB')
+    inputs = trans(inputs)
+    inputs = inputs.cuda()
+    inputs = inputs.unsqueeze(0)
+    inputs = F.interpolate(inputs, size=(1024, 1024), mode='bilinear', align_corners=True)
+    with torch.set_grad_enabled(False):
+        pre_count = 0.0
+        batch = {"image": inputs,
+                    "points": None,
+                    "targets": None,
+                    "st_sizes": None,
+                    "gd_count": None}
+        outputs = sam(batch, multimask_output=True)
+        masks = outputs['masks']
+        print(masks.shape)
 
 if __name__ == '__main__':
     main()
