@@ -120,6 +120,7 @@ def main():
         outputs = sam([batch], multimask_output=False)
         masks = outputs[0]['masks']
         print(masks.shape)
+        print(torch.max(masks))
 
 if __name__ == '__main__':
     main()
