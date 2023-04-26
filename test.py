@@ -102,7 +102,8 @@ def main():
     
     inputs = Image.open("./test_image/5.jpg").convert('RGB')
     inputs = np.array(inputs)
-    inputs = trans(inputs)
+    inputs = torch.Tensor(inputs).float()
+    #inputs = trans(inputs)
     inputs = inputs.cuda()
     inputs = inputs.unsqueeze(0)
     b, c, h, w = inputs.shape
