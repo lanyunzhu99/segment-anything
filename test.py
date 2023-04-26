@@ -127,7 +127,7 @@ def main():
         out = np.ones(masks.shape) * (masks > 0.5)
         out = np.uint8(out * 255)
         print(masks.shape)
-        print(torch.max(masks))
+        #print(torch.max(masks))
         out = cv2.imwrite('/3.jpg', out)
         
 
