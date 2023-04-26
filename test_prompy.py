@@ -11,5 +11,5 @@ print(masks[0, 100, 100])
 out = np.ones(masks.shape)
 out = out * masks
 out = out[0, :, :] * 255
-cv2.imwrite('/public2/home/lanyun/sam/segment-anything/1.jpg', np.uint8(out))
+cv2.imwrite('/public2/home/lanyun/sam/segment-anything/1.jpg', out)
 
