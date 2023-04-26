@@ -109,7 +109,7 @@ def main():
     inputs = F.interpolate(inputs, size=(1024, 1024), mode='bilinear', align_corners=True)
     with torch.set_grad_enabled(False):
         pre_count = 0.0
-        batch = {"image": inputs,
+        batch = {"image": [inputs],
                     "points": None,
                     "targets": None,
                     "st_sizes": None,
