@@ -107,14 +107,15 @@ def main():
     inputs = inputs.cuda()
     inputs = inputs.unsqueeze(0)
     inputs = F.interpolate(inputs, size=(1024, 1024), mode='bilinear', align_corners=True)
+    inputs = inputs.squeeze(0)
     with torch.set_grad_enabled(False):
         pre_count = 0.0
-        batch = {"image": [inputs],
+        batch = {"image": inputs,
                     "points": None,
                     "targets": None,
                     "st_sizes": None,
                     "gd_count": None}
-        outputs = sam(batch, multimask_output=True)
+        outputs = sam([batch], multimask_output=True)
         masks = outputs['masks']
         print(masks.shape)
 
