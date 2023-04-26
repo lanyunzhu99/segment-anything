@@ -124,6 +124,7 @@ def main():
         masks = outputs[0]['masks']
         masks = torch.sigmoid(masks)
         masks = masks.squeeze(0).squeeze(0).cpu().numpy()
+        print(torch.max(masks))
         out = np.ones(masks.shape) * (masks > 0.5)
         out = np.uint8(out * 255)
         print(masks.shape)
