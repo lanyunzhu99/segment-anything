@@ -11,6 +11,7 @@ import numpy as np
 import yaml
 import sys
 import math
+import cv2
 
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
@@ -122,8 +123,13 @@ def main():
         outputs = sam([batch], multimask_output=False)
         masks = outputs[0]['masks']
         masks = torch.sigmoid(masks)
+        masks = masks.squeeze(0).squeeeze(0).cpu().numpy()
+        out = np.ones(masks.shape) * (masks > 0.5)
+        out = np.uint8(out * 255)
         print(masks.shape)
         print(torch.max(masks))
+        out = cv2.imwrite('/3.jpg', out)
+        
 
 if __name__ == '__main__':
     main()
